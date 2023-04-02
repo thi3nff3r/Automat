@@ -15,4 +15,24 @@ public class UltimateQATest extends PageSetup {
         Assertions.assertEquals( "Button success", buttonSuccessText.getText());
 
     }
+
+    @Test
+    public void testTwo() throws InterruptedException {
+        WebElement nameInput = driver.findElement(By.id("et_pb_contact_name_0"));
+        nameInput.sendKeys("Tester");
+
+        WebElement emailInput = driver.findElement(By.id("et_pb_contact_email_0"));
+        emailInput.sendKeys("tester@tester.pl");
+
+        Thread.sleep (2000);
+
+        WebElement emailMeButton = driver.findElement(By.name("et_builder_submit_button"));
+        emailMeButton.click();
+
+        Thread.sleep (2000);
+
+        WebElement thanksText = driver.findElement(By.xpath("//div[@class='et-pb-contact-message']/p"));
+        Assertions.assertEquals("Thanks for contacting us", thanksText.getText());
+    }
+
 }
